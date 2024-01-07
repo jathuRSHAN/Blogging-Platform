@@ -1,0 +1,70 @@
+import logo from './logo.svg';
+import './App.css';
+import './Style.scss';
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Single from './pages/Single';
+import Write from './pages/Write';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+const Layout = ()=>{
+  return (
+    <>
+      <Navbar/>
+      <Outlet/>
+      <Footer/>
+    </>
+  );
+ }
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout/>,
+    children:[
+      {
+        path: "/",
+        element: <Home/>,
+      },
+      {
+        path: "/Login",
+        element: <Login/>,
+      },
+      {
+        path: "/Single",
+        element: <Single/>,
+      },
+      {
+        path: "/Register",
+        element: <Register/>,
+      },
+      {
+        path: "/Write",
+        element: <Write/>,
+      },
+    ]
+  },
+  
+]);
+
+
+
+function App() {
+  return (
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
+      </div>
+    </div>
+  );
+}
+
+
+export default App;
